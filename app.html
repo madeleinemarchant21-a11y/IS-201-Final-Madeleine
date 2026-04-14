@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Book Recommendation Generator</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      background: linear-gradient(135deg, #1f4037, #99f2c8);
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+
+      border-radius: 16px;
+      padding: 35px;
+      width: 380px;
+      text-align: center;
+
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+      color: #fff;
+
+      animation: fadeIn 0.8s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h1 {
+      margin-bottom: 10px;
+      font-size: 26px;
+    }
+
+    p {
+      opacity: 0.9;
+      font-size: 14px;
+    }
+
+    select {
+      margin-top: 15px;
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      width: 100%;
+      font-size: 14px;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 12px 20px;
+      font-size: 16px;
+
+      border: none;
+      border-radius: 10px;
+
+      background: #ffffff;
+      color: #1f4037;
+
+      cursor: pointer;
+      transition: 0.2s ease;
+      font-weight: bold;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      background: #e6fff3;
+    }
+
+    #result {
+      margin-top: 25px;
+      font-size: 18px;
+      font-weight: bold;
+      min-height: 40px;
+      transition: all 0.3s ease;
+    }
+
+    .back {
+      margin-top: 20px;
+      display: block;
+      color: white;
+      text-decoration: underline;
+      font-size: 13px;
+      opacity: 0.9;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <h1>📚 Book Generator</h1>
+    <p>Choose a genre and get a recommendation</p>
+
+    <select id="genre">
+      <option value="all">All Books</option>
+      <option value="fantasy">Fantasy</option>
+      <option value="classic">Classics</option>
+      <option value="dystopian">Dystopian</option>
+    </select>
+
+    <button onclick="generateBook()">Generate Book</button>
+
+    <div id="result"></div>
+  </div>
+
+  <script>
+    const books = {
+      fantasy: [
+        "Harry Potter and the Sorcerer's Stone",
+        "The Hobbit",
+        "Chronicles of Narnia"
+      ],
+      classic: [
+        "Pride and Prejudice",
+        "To Kill a Mockingbird",
+        "Little Women"
+      ],
+      dystopian: [
+        "1984",
+        "The Hunger Games",
+        "The Maze Runner"
+      ],
+      all: [
+        "Harry Potter",
+        "The Hobbit",
+        "1984",
+        "Pride and Prejudice",
+        "The Book Thief",
+        "The Hunger Games"
+      ]
+    };
+
+    function generateBook() {
+      const genre = document.getElementById("genre").value;
+      const list = books[genre];
+
+      const random = Math.floor(Math.random() * list.length);
+      const result = list[random];
+
+      typeWriter(result);
+    }
+
+    function typeWriter(text) {
+      let i = 0;
+      const output = document.getElementById("result");
+      output.textContent = "";
+
+      const interval = setInterval(() => {
+        output.textContent += text[i];
+        i++;
+        if (i === text.length) clearInterval(interval);
+      }, 40);
+    }
+  </script>
+
+</body>
+</html>

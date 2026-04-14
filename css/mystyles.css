@@ -1,0 +1,43 @@
+body {
+  background-color: #f4f1ea;
+  font-family: Georgia, serif;
+  color: #2b2b2b;
+}
+
+.header {
+  background-color: #3a5a40;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+.nav {
+  background-color: #588157;
+  padding: 10px;
+  text-align: center;
+}
+
+.nav a {
+  color: white;
+  margin: 10px;
+  text-decoration: none;
+}
+
+.section {
+  background-color: white;
+  margin: 20px;
+  padding: 20px;
+  border-radius: 10px;
+}
+.nav a:hover {
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.section {
+  transition: transform 0.2s ease;
+}
+
+.section:hover {
+  transform: scale(1.01);
+}
